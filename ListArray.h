@@ -1,4 +1,5 @@
 #include <ostream>
+#include <stdexcept>
 #include "List.h"
 using namespace std;
 
@@ -96,14 +97,14 @@ class ListArray : public List<T> {
             return removedElement;
         }
 
-        T get (int pos) const override {
+        T get (int pos) const {
             if (pos < 0 || pos >= n) {
                 throw out_of_range("Posición fuera de rango");
             }
             return arr[pos];
         }
 
-        int search (T e) const override {
+        int search (T e) const {
             for (int i = 0; i < n; i++) {
                 if (arr[i] == e) {
                     return i;
@@ -112,11 +113,11 @@ class ListArray : public List<T> {
             return -1;
         }
 
-        bool empty () const override {
+        bool empty () const {
             return n == 0;
         }
 
-        int size () const override {
+        int size () const {
             return n;
         }   
 };
